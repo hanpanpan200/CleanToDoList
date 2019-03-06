@@ -14,13 +14,17 @@ import UIKit
 
 class ToDoListWorker
 {
-  func fetchToDos(successHandler: (ToDoListModel.ToDoList) -> Void)
-  {
-    var todos: [ToDoListModel.ToDo] = []
+  private var todos: [ToDoListModel.ToDo] = []
+  
+  init() {
     for index in 1...5 {
       let todo = ToDoListModel.ToDo.init(id: index, content: "Content" + String(index))
       todos.append(todo)
     }
+  }
+  
+  func fetchToDos(successHandler: (ToDoListModel.ToDoList) -> Void)
+  {
     let viewModel = ToDoListModel.ToDoList.init(todos: todos)
     successHandler(viewModel)
   }

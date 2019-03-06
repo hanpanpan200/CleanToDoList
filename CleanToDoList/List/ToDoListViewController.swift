@@ -20,7 +20,7 @@ protocol ToDoListDisplayLogic: class
 class ToDoListViewController: UITableViewController, ToDoListDisplayLogic
 {
   var interactor: ToDoListBusinessLogic?
-  var router: (NSObjectProtocol & ToDoListRoutingLogic & ToDoListDataPassing)?
+  var router: (ToDoListRoutingLogic & ToDoListDataPassing)?
   
   var dataSource: ToDoListModel.ToDoList?
   // MARK: Object lifecycle
@@ -53,18 +53,6 @@ class ToDoListViewController: UITableViewController, ToDoListDisplayLogic
     router.dataStore = interactor
   }
   
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
-  
   // MARK: View lifecycle
   
   override func viewDidLoad()
@@ -92,5 +80,9 @@ class ToDoListViewController: UITableViewController, ToDoListDisplayLogic
     let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoTableViewCell
     cell.setLabe(labelContent: dataSource?.todos[indexPath.row].content ?? "")
     return cell
+  }
+  
+  @IBAction func onClick(_ sender: Any) {
+    router?.navigateToCreatePage()
   }
 }

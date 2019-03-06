@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9k2-Nb-chU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mGA-W8-fUV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--To Do List View Controller-->
         <scene sceneID="rcP-JQ-60u">
             <objects>
-                <tableViewController id="9k2-Nb-chU" customClass="ToDoListViewController" customModule="CleanToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ToDoList" id="9k2-Nb-chU" customClass="ToDoListViewController" customModule="CleanToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wh9-BO-tIc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,6 +35,7 @@
                                     <constraints>
                                         <constraint firstItem="LnJ-fa-hch" firstAttribute="centerY" secondItem="yzQ-wX-no3" secondAttribute="centerY" id="HXi-MJ-SfP"/>
                                         <constraint firstItem="LnJ-fa-hch" firstAttribute="leading" secondItem="yzQ-wX-no3" secondAttribute="leading" constant="10" id="g6Q-bB-gzZ"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LnJ-fa-hch" secondAttribute="trailing" constant="20" symbolic="YES" id="ln2-FZ-r8e"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -47,8 +48,33 @@
                             <outlet property="delegate" destination="9k2-Nb-chU" id="8vH-6O-jIS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="BDg-hI-vdm">
+                        <barButtonItem key="rightBarButtonItem" title="New ToDo" id="hUe-oC-07X">
+                            <connections>
+                                <action selector="onClick:" destination="9k2-Nb-chU" id="SRr-xc-L24"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4A-2H-Xh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936.8" y="4.9475262368815596"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gfV-BM-t4Z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mGA-W8-fUV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xmR-1J-uOn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9k2-Nb-chU" kind="relationship" relationship="rootViewController" id="lyc-Nx-Zu3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgX-oM-yV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="997.60000000000002" y="4.9475262368815596"/>
         </scene>
