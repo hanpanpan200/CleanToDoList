@@ -14,12 +14,10 @@ protocol CreateToDoInteractorProtocol {
 }
 
 class CreateToDoInteractor: CreateToDoInteractorProtocol {
-  weak var presenter: CreateToDoPresenter?
+  var presenter: CreateToDoPresenter?
   func validateToDo(content: String?) {
-    if content == nil || (content?.isEmpty)! {
-      presenter?.displayErrorMessage(message: "Please input your ToDo!")
-      return
-    }
+    let isValid = content != nil && !(content?.isEmpty)!
+    presenter?.enableCreateButton(isValid: isValid)
   }
   
   func createToDo(content: String) {

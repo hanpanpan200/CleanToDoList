@@ -31,7 +31,8 @@ class ToDoListInteractor: ToDoListBusinessLogic, ToDoListDataStore
   {
     worker = ToDoListWorker()
     worker?.fetchToDos(successHandler: { (todos) in
-      presenter?.presentFetchResults(todos: todos)
+      let viewModel = ToDoListModel.ToDoList.init(todos: todos)
+      presenter?.presentFetchResults(todos: viewModel)
     })
   }
 }

@@ -23,9 +23,8 @@ class ToDoListWorker
     }
   }
   
-  func fetchToDos(successHandler: (ToDoListModel.ToDoList) -> Void)
+  func fetchToDos(successHandler: ([ToDoListModel.ToDo]) -> Void)
   {
-    let viewModel = ToDoListModel.ToDoList.init(todos: todos)
-    successHandler(viewModel)
+    successHandler(todos)
   }
 }

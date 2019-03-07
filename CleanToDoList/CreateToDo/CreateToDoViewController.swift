@@ -13,6 +13,7 @@ class CreateToDoViewController: UIViewController {
   var interactor: CreateToDoInteractorProtocol?
   var router: CreateToDoRouter?
   
+  @IBOutlet weak var createButton: UIButton!
   @IBOutlet weak var textField: UITextField!
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -44,19 +45,19 @@ class CreateToDoViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    createButton.isEnabled = false
   }
   
-  @IBAction func onEditingEnd(_ sender: Any) {
+  @IBAction func onEditingChanged(_ sender: Any) {
     interactor?.validateToDo(content: textField.text)
   }
-  @IBAction func onCreate(_ sender: Any) {
+  
+  @IBAction func onCreateClicked(_ sender: Any) {
+    self.view.endEditing(true)
     interactor?.createToDo(content: textField.text!)
   }
   
-  func showErrorMessage(message: String) {
-    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-    alert.addAction(okAction)
-    present(alert, animated: true, completion: nil)
+  func enableCreateButton(isEnabled: Bool) {
+    createButton.isEnabled = isEnabled
   }
 }

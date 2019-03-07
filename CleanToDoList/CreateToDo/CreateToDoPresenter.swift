@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreateToDoPresenterProtocol {
-  func displayErrorMessage(message: String)
+  func enableCreateButton(isValid: Bool)
   func displayCreateSuccessModal()
 }
 
@@ -18,7 +18,7 @@ class CreateToDoPresenter:CreateToDoPresenterProtocol {
   func displayCreateSuccessModal() {
    
   }
-  func displayErrorMessage(message: String) {
-    viewController?.showErrorMessage(message: message)
+  func enableCreateButton(isValid: Bool) {
+    viewController?.enableCreateButton(isEnabled: isValid)
   }
 }
